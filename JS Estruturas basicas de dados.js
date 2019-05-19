@@ -215,6 +215,190 @@ function quickCheck(arr, elem) {
   console.log(quickCheck(['squash', 'onions', 'shallots'], 'mushrooms'));
 
 
+
+// Interação com itens de um array:
+
+
+// .every()
+
+// .forEach()
+
+// .map()
+
+
+// usando um For para percorrer um array:
+
+function greaterThanTen(arr) { //retorna apenas os itens > que 0
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > 10) {
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
+  }
+  greaterThanTen([2, 12, 8, 14, 80, 0, 1]);
+  // returns [12, 14, 80]
+
+  // 
+
+  function filteredArray(arr, elem) {
+    let newArr = [];
+    // change code below this line
+    for (i = 0; i < arr.length; i++){
+      newArr = [arr.reduce( (a) => a == elem)]; // R E D U C E
+    }
+    // change code above this line
+    return newArr;
+  }
   
-// Interação com todos os itens de um array usando um for
+  // change code here to test different cases:
+  console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3)); 
+
+
+
+const lista = [1,2,3,4,5,6,7,8,9];
+
+const reduzidor = (a,b) => a + b;
+
+console.log(lista.reduce(reduzidor));
+
+
+const array1 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+// 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer));
+// expected output: 10
+
+// 5 + 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer, 5));
+// expected output: 15
+
+
+function filtrarArray(arr, elem) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i].indexOf(elem)==-1){ //Verifica se o elemento existe dentro do array
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
+
+console.log(filtrarArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3));
+
+// Criando Array multidimensionais complexos
+
+let nestedArray = [ // base, 1º profundidade 
+  ['deep'], // Um array dentro de um array, 2º profundidade
+  [
+    ['deeper'], ['deeper'] // 2 arrays com 3º profundidade
+  ],
+  [
+    [
+      ['deepest'], ['deepest'] // 2 arrays com 4º profundidade
+    ],
+    [
+      [
+        ['deepest-est?'] // um array nested 5º nível de profundidade
+      ]
+    ]
+  ]
+];
+
+// (Crtl + Shift + i) Abre o painel javascript de navegador
+
+console.log(nestedArray[2][1][0][0][0]); 
+// logs: deepest-est?
+
+let myNestedArray = [
+  // change code below this line
+  ['unshift',
+    [
+      true, 'deep',
+      ['deeper',
+        [
+          'deepest', 0
+        ]
+      ]
+    ],
+  false, 1, 2, 3, 'complex', 'nested'],
+  ['loop', 'shift', 6, 7, 1000, 'method'],
+  ['concat', false, true, 'spread', 'array'],
+  ['mutate', 1327.98, 'splice', 'slice', 'push'],
+  ['iterate', 1.3849, 7, '8.4876', 'arbitrary', 'depth']
+  // change code above this line
+];
+
+
+
+// Valores chave em objetos JavaScript
+// key-value pairs
+
+let FCC_User = {
+  username: 'awesome_coder',
+  followers: 572,
+  points: 1741,
+  completedProjects: 15
+};
+
+// The above code defines an object called FCC_User that has four properties, 
+// each of which map to a specific value. If we wanted to know the number of
+// followers FCC_User has, we can access that property by writing:
+
+let userData = FCC_User.followers; // dot notation
+// userData equals 572   
+
+let userData = FCC_User['followers']; // bracket notation
+// userData equals 572
+// Colchetes permitem q variáveis sejam usadas em seu interior dinamicamente
+
+
+// Adicionando propriedades a um objeto:
+
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28
+};
+
+foods.bananas = 13;
+foods.grapes = 35;
+foods.strawberries = 27;
+
+
+console.log(foods);
+
+// Objetos podem ter profundidades como os arrays
+
+let nestedObject = {
+  id: 28802695164,
+  date: 'December 31, 2016',
+  data: {
+    totalUsers: 99,
+    online: 80,
+    onlineStatus: {
+      active: 67,
+      away: 13
+    }
+  }
+};
+
+userActivity.data.online = 45; // Editando uma matriz aninhada
+ 
+//Acessando o nomes das propriedades usando colchetes []
+
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28,
+  bananas: 13,
+  grapes: 35,
+  strawberries: 27
+};
+
+let selectedFood = getCurrentFood(scannedItem);
+let inventory = foods[selectedFood];
+
 
