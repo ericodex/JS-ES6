@@ -264,4 +264,4 @@ let wsRegex = /^\s+|\s+$/g;
 let result = hello.replace(wsRegex, ''); 
 
 
-
+// Explicação: Como um reator RBMK explode. 

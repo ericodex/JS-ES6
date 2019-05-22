@@ -1,5 +1,6 @@
 // @Ericodigos - Eric Oliveira Lima
-// 15/05/2019
+// 15/05/2019 
+//Editado: 22/05/2019 
 
 // B A S I C  D A T A    - JS
 // S T R U C T U R E S
@@ -385,10 +386,8 @@ let nestedObject = {
   }
 };
 
-userActivity.data.online = 45; // Editando uma matriz aninhada
- 
-//Acessando o nomes das propriedades usando colchetes []
 
+// objeto com frutas:
 let foods = {
   apples: 25,
   oranges: 32,
@@ -398,7 +397,154 @@ let foods = {
   strawberries: 27
 };
 
-let selectedFood = getCurrentFood(scannedItem);
-let inventory = foods[selectedFood];
+// Retorna o valor do item escaneado no objeto foods usando notação de colchetes. 
+function checkInventory(scannedItem) {
+  let item = foods[scannedItem];
+  return item
+}
+
+// change code below this line to test different cases:
+console.log(checkInventory("apples"));
+
+//## Usar o operador delete para remover uma propriedade de um objeto
+
+// objeto com frutas:
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28,
+  bananas: 13,
+  grapes: 35,
+  strawberries: 27
+};
+
+delete foods.apples;
+
+//## Verificar se o objeto tem determinada propriedade com .hasOwnProperty()
+
+users.hasOwnProperty('Alan');
+'Alan' in users;
+
+// Verificar se todos determinados itens estão no objeto
+
+let users = {
+  Alan: {
+    age: 27,
+    online: true
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: true
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function isEveryoneHere(obj) {
+  return users.hasOwnProperty('Alan','Jeff','Sarah','Ryan')
+  
+}
+
+console.log(isEveryoneHere(users));
+
+
+// Interagindo com todos os elementos de um objeto
+// utilizando o FOR  IN
+
+let users = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function countOnline(obj) {
+  let i = 0;
+  for (let itens in obj){
+    if (obj[itens].online == true){
+      i++;
+    }
+  }
+  return i;
+}
+
+console.log(countOnline(users));
+
+// Criando uma lista com todos as chaves de um
+// objeto.
+
+let users = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function getArrayOfUsers(obj) { 
+  let a = Object.keys(obj);   // Object keys retorna todos as keys de um array
+  return a;
+
+}
+
+// Alterar um array que esta armazenado dentro de um objeto.
+
+let user = {
+  name: 'Kenneth',
+  age: 28,
+  data: {
+    username: 'kennethCodesAllDay',
+    joinDate: 'March 26, 2016',
+    organization: 'freeCodeCamp',
+    friends: [
+      'Sam',
+      'Kira',
+      'Tomo'
+    ],
+    location: {
+      city: 'San Francisco',
+      state: 'CA',
+      country: 'USA'
+    }
+  }
+};
+
+function addFriend(userObj, friend) {
+  userObj.data.friends.push(friend);
+  return userObj.data.friends;
+}
+
+console.log(addFriend(user, 'Pete'));
+
+
 
 
