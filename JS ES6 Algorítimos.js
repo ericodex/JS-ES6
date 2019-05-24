@@ -75,26 +75,16 @@ reverseString4("hello");
 /*
  Condition Ternary Operators
 */
-
+// Se é membro retorna 2 se não retorna 10
 function pagaTaxa(éMembro) {
     return (éMembro ? "$2.00" : "$10.00");
-  }
-  
-console.log(pagaTaxa(true));
-// Retorna: "R$2.00"
-
-console.log(pagaTaxa(false));
-// Retorna: "R$10.00"
-
-console.log(pagaTaxa(1));
-// Retorna: "R$2.00"
+}
 
 // 003 - Fatorize um número
-
 /*
   Retorne o fatorial de um inteiro
 
-  - Se o um inteiro for N, seu fatorial será o produto da multiplicação de 
+  - Se o um inteiro for N, seu fatorial será o produto de 
   todos os positivos inteiros menores o iguais a N.
 
     Produto é o resultado da multiplicação
@@ -133,22 +123,17 @@ const findLongestWordLength = (str) => {
 
 /* Função que retorna os maiores números de cada uma das listas do array */
 function largestOfFour(arr) {
-
-let maiores = [];
-
-for (let a in arr){
-    let i = arr[a][0];
-    for (let b in arr[a]){
-        
-        if (arr[a][b] > i){
-            i = arr[a][b];
-        }
-    }
-    maiores.push(i); 
-    
-}
-console.log(maiores);
-
+  let maiores = [];
+  for (let a in arr){
+      let i = arr[a][0];
+      for (let b in arr[a]){
+          
+          if (arr[a][b] > i){
+              i = arr[a][b];
+          }
+      }
+      maiores.push(i);   
+  }
 return maiores;
 }
 
@@ -161,6 +146,87 @@ function confirmEnding(str, target) {
 
 confirmEnding("Bastian", "n");
 
-// 007 - Repetir um frase repetir uma frase
+// 007 - Repetir um frase um determinado número de vezes.
+
+function repeatStringNumTimes(str, num) {
+  let res = '';
+  if (num > 0) {
+    for (let i = 0; i < num; i++){
+      res = res + str;
+      }
+    } else {
+      res = '';
+    }
+  return res;
+}
+
+// 008 - Frase truncada
 
 
+function fraseTruncada(str, num) {
+  /* Retorna uma parte da frase informada pelo parâmetro ou string inteira 
+  concatenada com um ... */
+  if (str.length > num){
+    str = str.slice(0,num);    
+    return str + "...";
+  } else {
+    return str;
+  }
+}
+
+const fraseTruncada_2 = (str, num) => {
+  /* Retorna uma parte da frase informada pelo parâmetro ou string inteira 
+  concatenada com um ... */
+  if (str.length > num){
+    str = str.slice(0,num);
+    str + "...";
+  } else {
+    return str;
+  }
+}
+
+// 009 -  Finders Keepers (Encontrar e verificar)
+
+/* 
+ Uma função que procura em um determinado array (1º argumento) e retorna o
+ primeiro elemento do array que passar pelo teste (2º argumento). Se nenhum elemento
+ passar no teste, retorne indefinido.
+*/
+
+function findElement(arr, func) {
+  for (let e in arr){
+    num = arr[e];
+    if (func(num)){
+      return num;
+      break;
+    }
+  }
+  return undefined;
+}
+
+// 010 - Algoritmo de "Boo Who"
+
+function booWho(bool) {
+  /* Retorna Verdadeiro de um argumento for booleano*/
+  if (bool === true | bool === false ){
+    return true;
+  } else {
+    return false;
+  }
+  
+}
+
+
+// 011 - Colocar a primeira letra de cada palavra de uma frase como maiúscula.
+
+function titleCase(str) {
+  /* Retorna a frase com a primeira letra de cada palavra maiúscula. */
+  let ar = str.split(' ');
+  str = [];
+  for (let e in ar){
+    str.push(ar[e].charAt(0).toUpperCase() + ar[e].slice(1));
+  }
+  return str;
+}
+
+titleCase("I'm a little tea pot");
