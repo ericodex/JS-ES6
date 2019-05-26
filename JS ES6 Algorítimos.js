@@ -224,9 +224,156 @@ function titleCase(str) {
   let ar = str.split(' ');
   str = [];
   for (let e in ar){
-    str.push(ar[e].charAt(0).toUpperCase() + ar[e].slice(1));
+    str.push(ar[e].charAt(0).toUpperCase() + ar[e].slice(1).toLowerCase());
   }
-  return str;
+  return str.join(' ');
 }
 
-titleCase("I'm a little tea pot");
+titleCase("I'm a little tea pOt");
+
+// 012 - Slice and Splice
+
+
+
+function frankenSplice2(arr1, arr2, n) {
+  let arr3 = [];
+  /* Insira o 1º array no 2º a partir do índice 'n'. */
+  for (let i = 0; i < arr2.length; i++){
+    if (i == n){
+      for (let j = 0; j < arr1.length; j++){
+        arr3[n+j] = arr1[j];
+      }
+    }
+    arr3.push(arr2[i]);
+  }
+  console.log(arr3);
+
+  return arr3;
+}
+
+function frankenSplice(arr1, arr2, n) {
+  let arre = arr1;
+  let r = arr2.slice();
+  r.splice(n,0,...arre);
+  return r;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+// 013 - Remova os valores falsificados de uma lista.
+
+/** Valores falsificados são (false, null,"", 0, undefined and NaN) */
+
+function bouncer(arr) {
+  let arr2 = arr.filter(Boolean);
+  return arr2;
+}
+
+
+
+bouncer([false, null, 0, NaN, undefined, ""]);
+
+// 014 - Onde eu pertenço?
+
+/** Retorna a posição índice que um valor 'num' deve ficar em um determinado
+ * array
+ */
+function getIndexToIns(arr, num) {
+  arr.sort(function (a,b){return a - b});
+  let i=0;
+  while(num > arr[i]){ // Utilizando WHILE
+    i++;
+  }
+  return i;
+}  
+
+
+/* Concatena o 'num' no array 'arr', classifica a lista concatenada 
+e retorna o índice do 'num' nessa lista*/
+function getIndexToIns2(arr, num) {
+  return arr.concat(num).sort((a,b) => a-b).indexOf(num);
+}
+
+// 015 - Mutações 
+
+/** Retorne verdadeiro se todas as letras do primeiro elemento contém todas
+ * as letras do segundo elemento.
+ */
+function mutation(arr) {
+  var a = arr[1].toLowerCase();
+  var b = arr[0].toLowerCase();
+  for (var i=0;i<a.length;i++) {
+    if (b.indexOf(a[i]) < 0)
+      return false;
+  }
+  return true;
+ }
+mutation(["banca", "xanana"]);
+
+function mutation2(arr) { // Declarativa
+  return arr[1].toLowerCase()
+    .split('')
+    .every(function(letter) {
+      return arr[0].toLowerCase()
+        .indexOf(letter) != -1;
+    });
+}
+
+// Js .every
+// https://www.freecodecamp.org/forum/t/javascript-array-prototype-every/14287
+function isBigEnough(element, index, array) {
+  return element >= 10;
+}
+[12, 5, 8, 130, 44].every(isBigEnough);   // false
+[12, 54, 18, 130, 44].every(isBigEnough); // true
+
+// Define the callback function.
+function CheckIfEven(value, index, ar) {
+  document.write(value + " ");
+
+  if (value % 2 == 0)
+      return true;
+  else
+      return false;
+}
+
+// Create an array.
+var numbers = [2, 4, 5, 6, 8];
+
+// Check whether the callback function returns true for all of the
+// array values.
+if (numbers.every(CheckIfEven))
+  document.write("All are even.");
+else
+  document.write("Some are not even.");
+
+// Output:
+// 2 4 5 Some are not even.
+
+// 016 - Chunky Monkey
+
+function chunkArrayInGroups(arr, size){
+  var temp = [];
+  var result = [];
+  for(var a=0;a<arr.length;a++) {
+    if(a%size!==size-1)
+      temp.push(arr[a]);
+    else {
+      temp.push(arr[a]);
+      result.push(temp);
+      temp = [];
+    }
+  }
+  if (temp.length !== 0)
+    result.push(temp);
+  return result;
+}
+
+function chunkArrayInGroups2(arr, size) {
+  // Break it up.
+  var arr2 = [];
+  for (var i = 0; i < arr.length; i+=size) {
+  arr2.push(arr.slice(i , i+size));
+  }
+  return arr2;
+}

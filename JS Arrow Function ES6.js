@@ -37,9 +37,59 @@ tupi.name // "ubuntu" // O nome implícito da expressão é herdado por outros o
 var more = function baz() {}
 more.name // "baz"
 
-console.log(ubuntu === tupi); // true
-console.log(typeof baz); // undefined
-console.log(more === baz); // false (errado porque baz == undefined)
+const persons = [
+  {
+    name: null,
+    age: 20,
+    address: []
+  },
+  {
+    name: "Alex",
+    age: 29,
+    founders: []
+  },
+  {
+    name: "Mallik",
+    age: 10,
+    address: []
+  },
+  {
+    name: "Renu",
+    age: 50,
+    address: []
+  },
+  {
+    age: 25,
+    address: []
+  }
+];
 
+const makeNameUpperCase = name => name.toUpperCase();
+const personNames = persons.map(person => person.name);
 
+const personNamesInCaps = personNames
+                           .filter(Boolean)
+                           .map(makeNameUpperCase);
+// [ "ALEX", "MALLIK", "RENU" ]
+
+console.log(personNamesInCaps);
+
+/*****************************************************************************/
+/** No JS FUNÇÕES são objetos, e 'THIS' é uma das propriedades de qualquer objeto.  
+ *  No terminal vc pode utilizar [console.log(this);] para retornar o objeto da 
+ *  janela do navegador.  Dentro de uma função e fora do contexto global ele retornará
+ *  o objeto da função no contexto atual.
+ * 
+ *  'THIS' armazena o contexto atual de execução do programa JS.
+ */
+
+function doSomething(a, b) { 
+  
+  // adds a propone property to the Window object
+   this.propone = "test value";  
+} 
+
+doSomething(); 
+window.propone
+// Retorna: "test value"
 
