@@ -1,47 +1,45 @@
 /** @ericodigos - 24/05/2019 - */
 
-/**** 001 - Criar um objeto básico. */
+/**** 001 - Crie um objeto básico. *///_________________________________________________
 let cachorro = 
     {
         name:'eric',
         numLegs:2
     };
 
-/**** 002 - Usar notação de ponto para acessar uma 
+/**** 002 - Use a notação de ponto para acessar uma  //_________________________________
     * propriedade de um objeto. */ 
 
 console.log(cachorro.name);
 console.log(cachorro.numLegs);
 
-/*** 003 - Criar um método em um objeto */
-/**  Métodos são propriedades dentro de objetos
- * q funcionam como funções;
+/*** 003 - Crie um método em um objeto */ //____________________________________________
+/**  Métodos são propriedades dentro de objetos q funcionam como funções.
  */
-
 let duck = 
     {
-        name: "Aflac",
+        name: "Tietê",
         numLegs: 2,
         // sayName é o método do objeto duck.
         sayName: function() 
             {
-                return "O nome do rio é Tietê " + duck.name + ".";
+                return "O nome do rio é " + duck.name + ".";
             }
     };
 
-duck.sayName(); // Returns "The name of this duck is Aflac."
+duck.sayName(); // Returns "O nome do rio é Tietê ."
 
-/**** 004 - THIS -  */
+/**** 004 - THIS -  */ //_______________________________________________________________
 
-let dog = { // This utilizará o contexto atual de chamada da função.
+let dog = { // 'this' utiliza o contexto atual da chamada da função.
     name: "Spot",
     numLegs: 4,
     sayLegs: function() {return "This dog has " + this.numLegs + " legs.";}
   };
   
-  dog.sayLegs();
+dog.sayLegs();
 
-/** 005 - Definir um construtor */
+/** 005 - Definir um construtor */ //___________________________________________________
  /** Construtores são funções que criam novos objetos. Definindo propriedades e 
   * comportamentos. 
   */
@@ -53,40 +51,38 @@ function Pássaro() {
     this.nPernas = 2;
 }
 
-// 006 - Usar um construtor para criar um objeto
+// 006 - Usar um construtor para criar um objeto //_____________________________________
 
-    //Exemplo: 
-
+//Exemplo: 
 function Bird() {
     this.name = "Albert";
     this.color = "blue";
     this.numLegs = 2;
-    // "this" inside the constructor always refers to the object being created
+    // "this" dentro do construtor sempre se referirá ao objeto q é construído.
   }
   
-  let blueBird = new Bird(); // Note operador 'new'
+let blueBird = new Bird(); // Note operador 'new'
 
-  blueBird.name; // => Albert
-  blueBird.color; // => blue
-  blueBird.numLegs; // => 2
+blueBird.name; // => Albert
+blueBird.color; // => blue
+blueBird.numLegs; // => 2
 
-  blueBird.name = 'Elvira';
-  blueBird.name; // => Elvira
+blueBird.name = 'Elvira';
+blueBird.name; // => Elvira
 
-  // 007 -  Estendendo o construtor com argumentos recebidos
-   
-  /* Exemplo de um construtor que recebe argumentos para construção de um objeto */
-  function Bird(name, color) {
-    this.name = name;
-    this.color = color;
-    this.numLegs = 2;
-  }
+// 007 -  Estendendo o construtor com argumentos recebidos // __________________________
+/* Exemplo de um construtor que recebe argumentos para construção de um objeto */
+function Bird(name, color) {
+  this.name = name;
+  this.color = color;
+  this.numLegs = 2;
+}
 
-  let cardinal = new Bird("Bruce", "red");
+let cardinal = new Bird("Bruce", "red");
 
-  cardinal.name // => Bruce
-  cardinal.color // => red
-  cardinal.numLegs // => 2
+cardinal.name // => Bruce
+cardinal.color // => red
+cardinal.numLegs // => 2
 
 function Dog(name, color);
     {
@@ -97,7 +93,7 @@ function Dog(name, color);
     
 let terrier = new Dog('Marcos', 'Marron');
 
-/** 008 - Verificar um objeto construtor com '.instanceof' */
+/** 008 - Verificar um objeto construtor com '.instanceof' *///_________________________
 /** Ｌｏｏｋ　ａｔ　ｔｈｅ　ｓｔａｒｓ． */
 /** instanceof compara um objeto com um construtor e retorna verdadeiro ou falso */
 
@@ -107,11 +103,11 @@ let Bird = function(name, color) {
     this.numLegs = 2;
   }
   
-  let crow = new Bird("Alexis", "black");
+let crow = new Bird("Alexis", "black");
   
-  crow instanceof Bird; // => true   // Verificador 
+crow instanceof Bird; // => true   // Verificador 
 
-/** 009 - Entendendo a propriedade 'Own'  */
+/** 009 - Entendendo a propriedade 'Own'  */ //_________________________________________
 /** */
 
 function Bird(name) {
@@ -136,191 +132,187 @@ for (let property in duck) {
 
 console.log(ownProps); // prints [ "name", "numLegs" ]
 
-/**** 010 - Utilizar as propriedades de protótipo para reduzir código duplicado */
-/***/
+/**** 010 - Utilizar as propriedades de protótipo para reduzir código duplicado */ // __
 /** Um propriedade protótipo é uma propriedade q é compartilhada entre 
  **  todas as instâncias */
 
 Bird.prototype.numLegs = 2; /** Dessa forma todas as instâncias de Bird 
     compartilharão essa propriedade.*/
 
-/**** 011 - Iteração através de todas propriedades */
-/** */
-//
+/**** 011 - Iteração através de todas propriedades */ //________________________________
 function Bird(name) {
     this.name = name; //own property
   }
   
-  Bird.prototype.numLegs = 2; // prototype property
-  
-  let duck = new Bird("Donald");
+Bird.prototype.numLegs = 2; // prototype property
 
-  /** O código abaixo lista todas as Own propriedades de um objeto
-   *  e as propriedades protótipo.*/
-  let ownProps = [];
-  let prototypeProps = [];
-  
-  for (let property in duck) {
-    if(duck.hasOwnProperty(property)) 
-    {
-      ownProps.push(property);
-    } else 
-    {
-      prototypeProps.push(property);
-    }
+let duck = new Bird("Donald");
+
+/** O código abaixo lista todas as Own propriedades de um objeto
+ *  e as propriedades protótipo.*/
+let ownProps = [];
+let prototypeProps = [];
+for (let property in duck) {
+  if(duck.hasOwnProperty(property)) 
+  {
+    ownProps.push(property);
+  } else 
+  {
+    prototypeProps.push(property);
   }
-  
-  console.log(ownProps); // prints ["name"]
-  console.log(prototypeProps); // prints ["numLegs"]
+}
+console.log(ownProps); // prints ["name"]
+console.log(prototypeProps); // prints ["numLegs"]
 
-/**** 012 - Entendendo melhor o conceito da propriedade: '.construtor'   */
+
+/**** 012 - Entendendo melhor o conceito da propriedade: '.construtor'   */ //__________
 /** */
 /** O .constructor permite verificar se uma instância de objeto é do 
  * mesmo tipo de um construtor. 
- * #- Visto que a propriedade do construtor pode ser sobrescrita, é preferível
+ * _- Visto que a propriedade do construtor pode ser sobrescrita, é preferível
  * utilizar o .instanceof
  */
 
- /**________________________________________________________________________ */
-    function Canino(nome) //Definindo objeto
-    {
-        this.nome = nome;
-        this.númPatas = 4;
-    }
- 
-    function Pássaro(nome) //Definindo objeto
-    {
-        this.nome = nome;
-        this.númPés = 2;
-    }
+/**________________________________________________________________________ */
+function Canino(nome) //Definindo objeto
+{
+  this.nome = nome;
+  this.númPatas = 4;
+}
 
-    let arara = new Pássaro(); // Instânciando novo objeto.
-    let beagle = new Canino();
+function Pássaro(nome) //Definindo objeto
+{
+  this.nome = nome;
+  this.númPés = 2;
+}
 
-    function éMembroDaUniPássaros(candidato) 
-    {
-        if (candidato.constructor === Pássaro) { //Verifica se é do mesmo tipo
-          return true;
-        } else {
-          return false;
-        }
-    }
+let arara = new Pássaro(); // Instanciando novo objeto.
+let beagle = new Canino();
 
-    console.log(éMembroDaUniPássaros(arara));
-    
-    console.log(éMembroDaUniPássaros(beagle));
- /**________________________________________________________________________ */
+function éMembroDaUniPássaros(candidato) 
+{
+  if (candidato.constructor === Pássaro) { //Verifica se é do mesmo tipo
+    return true;
+  } else {
+    return false;
+  }
+}
 
- /** 013 - Alterando o protótipo para um novo objeto
+console.log(éMembroDaUniPássaros(arara));
+
+console.log(éMembroDaUniPássaros(beagle));
+
+/** 013 - Alterando o protótipo para um novo objeto //__________________________________
   * 
-  * #- As propriedades protótipo podem ser adicionadas todas de uma vez.
+  * _- As propriedades protótipo podem ser adicionadas todas de uma vez.
   */
- Pássaro.prototype = {
-    numPatas: 2, 
-    comer: function() {
-      console.log("nom nom nom");
-    },
-    descrição: function() {
-      console.log("Sou chamado de " + this.nome);
-    }
-  };
+Pássaro.prototype = {
+  numPatas: 2, 
+  comer: function() {
+    console.log("nom nom nom");
+  },
+  descrição: function() {
+    console.log("Sou chamado de " + this.nome);
+  }
+};
 
 
-/** 014 - Definir a propriedade construtor*/
+/** 014 - Definir a propriedade 'constructor:'*/ //_____________________________________
+Pássaro.prototype = 
+{
+    constructor: Pássaro, // Define a propriedade do constructor
+    numPatas: 2,
+    eat: function() 
+        {
+            console.log("nom nom nom");
+        },
+    describe: function() 
+        {
+            console.log("Sou chamado de " + this.nome); 
+        }   
+};
 
-    Pássaro.prototype = 
-    {
-        constructor: Pássaro, // Define a propriedade do constructor
-        numPatas: 2,
-        eat: function() 
-            {
-                console.log("nom nom nom");
-            },
-        describe: function() 
-            {
-                console.log("Sou chamado de " + this.nome); 
-            }   
-    };
-
-/**** 015 - Entendendo de onde o prototype é herdado
+/**** 015 - Entendendo de onde o '.prototype' é herdado //_________________________________
  * 
  */
-    function Bird(name) {
-        this.name = name;
-    }
-    
-    let duck = new Bird("Donald");
-    Bird.prototype.isPrototypeOf(duck); //isPrototypeOf
-    // returns true
-
-/*======================================================================== */
-/**** 016 - Entendendo a cadeia de Prototype
- * 
- * Todos objetos em JS tem prototypes salvo poucas exceções. 
- * 
- */
-   function Bird(name) 
-   {
+function Bird(name) {
     this.name = name;
-    }
-  
-    typeof Bird.prototype; // => object
+}
 
-    /** Um prototype of Bird.prototype é o Object.prototype */
+let duck = new Bird("Donald");
+Bird.prototype.isPrototypeOf(duck); //isPrototypeOf
+// returns true
 
-    Object.prototype.isPrototypeOf(Bird.prototype);
-    // returns true
+/**** 016 - Entendendo a cadeia de Prototype //_________________________________________
+ * Todos objetos em JS tem prototypes salvo poucas exceções. 
+ */
+function Bird(name) {
+    this.name = name;
+  }
+  typeof Bird.prototype; // => object
 
-    // .hasOwnProperty
-    let duck = new Bird("Donald");
-    duck.hasOwnProperty("name"); // => true
+/** Um prototype of Bird.prototype é o Object.prototype */
 
-/**_______________________________________________________________________ */
-    function Dog(name) {
-        this.name = name;
-    }
-    
-    let beagle = new Dog("Snoopy");
-    
-    Dog.prototype.isPrototypeOf(beagle);  // => true
+Object.prototype.isPrototypeOf(Bird.prototype);
+// returns true
 
-    Object.prototype.isPrototypeOf(Dog.prototype);
-/**_______________________________________________________________________ */
+// '.hasOwnProperty'
+let duck = new Bird("Donald");
+duck.hasOwnProperty("name"); // => true
 
-/*======================================================================== */
-/**** 017 - Utilizando heranças para não se repetir.
+function Dog(name) {
+    this.name = name;
+}
+
+let beagle = new Dog("Snoopy");
+
+Dog.prototype.isPrototypeOf(beagle);  // => true
+
+Object.prototype.isPrototypeOf(Dog.prototype);
+
+/**** 017 - Utilizando heranças para não se repetir. //_________________________________
  * 
  * (D R Y) - Don't repeat yourself
  * 
  */
-    // Exemplo:
-  function Cat(name) {
-    this.name = name; 
-  }
-  
-  Cat.prototype = {
-    constructor: Cat, 
-  };
-  
-  function Bear(name) {
-    this.name = name; 
-  }
-  
-  Bear.prototype = {
-    constructor: Bear, 
+    // Exemplo ruim:
+    Bird.prototype = { // Código repetido__________________@
+      constructor: Bird,
+      describe: function() {
+        console.log("My name is " + this.name);
+      }
+    };
     
-  };
-  
-  function Animal() { }
-  
+    Dog.prototype = {
+      constructor: Dog,
+      describe: function() {
+        console.log("My name is " + this.name);
+      }
+    }; // __________________________________________________@
+
+    //___Exemplo bom
+  function Animal() { };
+
   Animal.prototype = {
-    constructor: Animal,
-    eat: function() {
-      console.log("nom nom nom");
+    constructor: Animal, 
+    describe: function() {
+      console.log("My name is " + this.name);
     }
   };
 
-/**** 018 - Comportamento de herança Supertype */ // inheritance
+  
+  Bird.prototype = {
+    constructor: Bird
+  };
+  
+  Dog.prototype = {
+    constructor: Dog
+  };//_______________________________________________________@
+
+
+
+
+/**** 018 - Comportamento de herança Supertype */ // inheritance _______________________
 
 /** No nº17 foi exemplificado um Supertype chamado Animal, que compartilha
  * propriedades com outros animais.  - inheritance -
@@ -345,7 +337,7 @@ let beagle = new Animal;
 duck.eat(); // Should print "nom nom nom"
 beagle.eat(); // Should print "nom nom nom" 
 
-/**** 019 - Herança como filho */ // inheritance
+/**** 019 - Herança como filho */ // inheritance _______________________________________
 
 
 function Animal() { }
@@ -365,7 +357,7 @@ Dog.prototype = Object.create(Animal.prototype);  // Child - herança
 let beagle = new Dog();
 beagle.eat();  // Should print "nom nom nom"
 
-/**** 020 - Redefinir a herança do objeto do construtor da propriedade. 
+/**** 020 - Redefinir a herança do objeto do construtor da propriedade. ________________
  *  In previous lessons, you learned that an object can inherit its behavior 
  * (methods) from another object by cloning its prototype object:
  * Quando um objeto herda seu prototype de outro objeto, ele também herda o 
