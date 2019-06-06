@@ -26,4 +26,4 @@ function mdc(arr){//Recebe uma lista de inteiros e retorna o Máximo Divisor Com
     return intercessão[intercessão.length-1];
   }
   
-  mdc([12,0])
+  mdc([42,42034])
