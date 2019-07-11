@@ -11,7 +11,6 @@ zed = {**queijo, **goiaba}
 # var_a e var_b;
 var_a = 42
 var_b = 34
-
 # Uma maneira clássica e muito utilizada é
 # criar uma variável temporária:
 temp = var_a

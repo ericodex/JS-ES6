@@ -32,7 +32,6 @@ class App extends Component {
 
 export default App;
 
-
 /** Exemplo construtor de classe com métodos e herança. */
 class Developer {
     constructor(firstname, lastname) {
@@ -106,8 +105,6 @@ function FancyBorder(props) {
     );
   }
 
-
-
   function Welcome(props) {
     return <h1>Hello, {props.name}</h1>;
   }
@@ -117,7 +114,6 @@ function FancyBorder(props) {
       return <h1>Hello, {this.props.name}</h1>;
     }
   }
-
 
   /// -- Arrow Functions
   // Função em ES5

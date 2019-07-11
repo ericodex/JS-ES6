@@ -1,6 +1,7 @@
 /** @ericodigos - 24/05/2019 - */
 
 /**** 001 - Crie um objeto básico. *///_________________________________________________
+/** let deixa o objeto existir apenas dentro dessa instância  */
 let cachorro = 
     {
         name:'eric',

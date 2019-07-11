@@ -1,0 +1,52 @@
+# YAML - Ain't Markup Language 
+# Isso é um comentário
+# Extensões: .yml .yaml
+
+# Indentação define os nível de dados
+
+# Ancora: $nome_da_ancora, isso armazena as informações do item e o msm pode ser acessado 
+# por *nome_da_ancora.
+
+# Organizado pela indentação.
+pessoa:
+  nome: &anc_name "Eric"
+  ocupação: "Estudante-de-programação"
+  idade: 23
+  num_decimal: 2.3
+  num_exponencial: 1.e+10
+  cromoss_dom: XY
+  data_nasc: 1987-01-01 11:36:00
+  hobbies:
+    -matemática
+    -leitura
+    -plantas
+    -corrida
+  livros:
+    ["Matemática Discreta e suas Aplicações Kenneth H. Rosen","Euclides: Os Elementos"]
+  amigos:
+    - Nome: "Phany"
+      idade: 22
+  descrição: >   # define consolidação dos dados abaixo na msm linha. 
+    longo texto vive sobre este local digital rpt longo 
+    texto vive sobre este local digital rpt longo texto vive 
+    sobre este local digital rpt longo texto vive sobre este 
+    local digital rpt longo texto vive sobre este local digital rpt 
+    longo texto vive sobre este local digital rpt
+  assinatura: | # '|' define a formatação de linhas abaixo.
+    Eric Oliveira Lima
+    eric.075315@gmail.com
+  identidade_nome: *anc_name
+
+# Ancoras também funcionam para armazenar objetos inteiros. 
+
+# Definindo a ancora de objeto completo.
+base: &anc_base
+  variável: valor1
+
+# Acessando o objeto definido pela ancora acima.
+outra_base:
+  <<: *anc_base
+
+
+idade: !!float 23
+gpa: !!str 345
