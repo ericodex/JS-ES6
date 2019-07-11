@@ -1,4 +1,4 @@
-
+/*jshint esversion: 6 */
 
 //Simples recursividade
 function recursão(data){
@@ -18,6 +18,8 @@ function somaSequencial(n){
         return n + somaSequencial(n -1);
     }
 }
+
+console.log(somaSequencial(5));
 
 // Fatorial com recursividade
 function fatorar(n){
@@ -42,6 +44,11 @@ function mmc(a,b){
 
 console.log(mdc(303,707));
 console.log(mmc(303,707));
+
+
+
+
+
 
 /// Algoritmo de Euclides estendido
 
@@ -77,3 +84,17 @@ function euclidesEX (a, b){
 
 	return [r, u, v]; // tais que a*u + b*v = r et r = pgcd (a, b)
 }
+
+// Converter um texto p número recursivamente
+function convert(num) {
+    let chars = num.split('');
+
+if(chars.length === 1) {
+        return parseInt(chars[0])
+    } else {
+        let pow = chars.length -1;
+        return Math.pow(10, pow) * parseInt(chars[0]) + convert(num.substr(1));
+    }
+}
+
+convert('234')*2;
