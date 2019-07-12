@@ -113,6 +113,7 @@ function mmcIntervaloOkay(arr) {
 // @#$@#$@#$@#$@#$ Matemática Euclidiana Suprema @#$@#$@#$@#$@#$@#$@#$
 var iter=0; // Contador de iterações.
 
+// Função recursiva q retorna o máximo divisor comum de dois inteiros.
 function mdc(a,b){
   iter++;
   if (b == 0){
@@ -122,11 +123,13 @@ function mdc(a,b){
   }
 }
 
+// Função q utiliza o MDC para retornar o MMC de dois números inteiros.
 function mmc(a,b){
   iter++;
   return ((a * b) / mdc(a,b));
 }
 
+// Função com método recursivo que retorna o MMC de um conjunto de inteiros.
 function f_euclides_mmc(a,b){
 
   let arr = [a,b].sort( (a,b)=> a > b);
@@ -148,7 +151,7 @@ function f_euclides_mmc(a,b){
 }
 
 var t0 = performance.now();
-console.log(f_euclides_mmc(23, 18));
+console.log(f_euclides_mmc(23, 15));
 var t1 = performance.now();
 console.log('A execução de f_euclides_mmc durou '+ (t1-t0) + ' milissegundos.');
 console.log("A execução de 'f_euclides_mmc' teve " + iter+ " iterações.");
