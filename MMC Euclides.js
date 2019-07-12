@@ -111,59 +111,46 @@ function mmcIntervaloOkay(arr) {
 
 
 // @#$@#$@#$@#$@#$ Matemática Euclidiana Suprema @#$@#$@#$@#$@#$@#$@#$
-var inter=0; // Contador de iterações.
+var iter=0; // Contador de iterações.
 
-/*** @ Ericódigos 
- * A belíssima função abaixo utiliza algumas propriedades da teoria de conjuntos e 
- * da teoria euclidiana das relações entres os múltiplos e divisores comuns.
- * 
- * Perceba que:
- *  1 - Encontrar Máximo Divisor Comum exige pouquíssimas iterações com o método 
- * Euclidiano e ele está totalmente relacionado com o Mínimo Múltiplo Comum de acordo 
- * com tmb com a teoria Euclidiana:
- * 
- *     MMC(a,b) = (a * b/MDC(a,b))  
- */
-
-function mmcIntervaloEuclidiano(arr) {
-    let iter = 0;
-    let min = Math.min.apply(null,arr);
-    let max = Math.max.apply(null,arr);
-    let v_mmc = mmc(min,min+1);
-
-    while(min < max){
-        let iter = iter +1;
-        min++;
-        v_mmc = mmc(v_mmc,min);
-    }
-    return v_mmc;
-}
-
-// Calcula o MDC de dois inteiros.
 function mdc(a,b){
-    while(b>0){
-        let iter = iter +1;
-        let t=a;
-        a=b;
-        b=t%b;
-    }
-    return a;
+  iter++;
+  if (b == 0){
+      return a;
+  }else{
+      return mdc(b , a % b);
+  }
 }
 
-// Calcula o MMC de dois inteiros com MMC(a,b) = (a * b/MDC(a,b)) 
 function mmc(a,b){
-  let iter = iter +1;
-    return (a * b /mdc(a,b))
+  iter++;
+  return ((a * b) / mdc(a,b));
+}
+
+function f_euclides_mmc(a,b){
+
+  let arr = [a,b].sort( (a,b)=> a > b);
+  let arre = [];
+  for(let i=arr[0];i<=arr[1];i++){
+    arre.push(i); 
+  }
+  console.log('O MMC do conjunto: [' + arre + '] é:');
+  function f_mmc(cnj){
+    iter++;
+    if (cnj.length == 2){
+        return mmc(cnj[0],cnj[1]);
+    }else{
+        ar = [mmc(cnj[0],cnj[1]),...cnj.slice(2)];
+        return f_mmc(ar);
+    }
+  }
+  return f_mmc(arre);
 }
 
 var t0 = performance.now();
-console.log(mmcIntervaloEuclidiano([23,18]));
+console.log(f_euclides_mmc(23, 18));
 var t1 = performance.now();
-console.log('A execução de mmcIntervaloEuclidiano durou '+ (t1-t0) + ' milissegundos.');
-console.log("A execução de 'mmcIntervaloEuclidiano' teve " + iter+ " iterações.");
-/**
- *  Resultado para [23,18]: 6056820
- *  A execução de mmcIntervaloEuclidiano durou 1 milissegundos.
- *  A execução de 'mmcIntervaloEuclidiano' teve 28 iterações.
- */
+console.log('A execução de f_euclides_mmc durou '+ (t1-t0) + ' milissegundos.');
+console.log("A execução de 'f_euclides_mmc' teve " + iter+ " iterações.");
+
 //       ~~$#$%**~~~~$#$%**~~ Fim do exemplo supremo ~~$#$%**~~~~$#$%**~~ 

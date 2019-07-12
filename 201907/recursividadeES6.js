@@ -30,6 +30,9 @@ function fatorar(n){
     }
 }
 
+
+
+
 function mdc(a,b){
     if (b == 0){
         return a;
@@ -41,6 +44,34 @@ function mdc(a,b){
 function mmc(a,b){
     return ((a * b) / mdc(a,b));
 }
+
+function f_euclides_mmc(a,b){
+
+    let arr = [a,b].sort( (a,b)=> a > b);
+    let arre = [];
+    for(let i=arr[0];i<=arr[1];i++){
+      arre.push(i); 
+    }
+    console.log('O MMC do conjunto: [' + arre + '] é:');
+    function f_mmc(cnj){
+        if (cnj.length == 2){
+            return mmc(cnj[0],cnj[1]);
+        }else{
+            ar = [mmc(cnj[0],cnj[1]),...cnj.slice(2)];
+            console.log(ar);
+            return f_mmc(ar);
+        }
+    }
+    return f_mmc(arre);
+}
+
+f_euclides_mmc(23, 18);
+
+
+arri = [1,2,3,4,5];
+console.log(arri.slice(2));
+
+
 
 console.log(mdc(303,707));
 console.log(mmc(303,707));
