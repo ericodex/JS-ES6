@@ -1,5 +1,8 @@
 {
     "python.pythonPath": "C:\\Users\\Eric\\Anaconda3\\python.exe",
     "git.ignoreLimitWarning": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "cSpell.words": [
+        "buscarvalue"
+    ]
 }

@@ -6,7 +6,7 @@
             "type": "firefox",
             "request": "launch",
             "reAttach": true,
-            "file": "${workspaceFolder}/201907/arvoreBinária/index.html"
+            "file": "${workspaceFolder}/201907/arvoreBinaria/index.html"
         }
     ]
 }
