@@ -4,7 +4,7 @@
 // loop
 // calculate sum of number
 
-class Node {
+function Node {
     constructor(left, right, data) {
       this.left = left;
       this.right = right;
